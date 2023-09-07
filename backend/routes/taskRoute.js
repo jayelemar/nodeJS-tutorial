@@ -1,25 +1,12 @@
 const express = require('express');
-const Task = require('../model/taskModel');
+const Task = require('../models/taskModel');
+const { createTask, getTasks } = require('../controllers/taskController');
 const router = express.Router()
 
 // Create / Post a Task
-router.post("/api/tasks", async (request, response) => {
-    try {
-        const task = await Task.create(request.body);
-        response.status(200).json(task);
-    } catch (error) {
-        response.status(500).json({msg: error.message})
-    }
-})
+router.post("/api/tasks", createTask )
 
 // Get / Read Tasks
-router.get("/api/tasks", async(request, response) => {
-    try {
-        const tasks = await Task.find() // get all data , if find(id) get only on that specific id
-        response.status(200).json(tasks)
-    } catch (error) {
-        response.status(500).json({ msg: error.message })
-    }
-})
+router.get("/api/tasks", getTasks )
 
 module.exports = router
