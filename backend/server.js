@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const Task = require("./models/taskModel");
 const taskRoutes =require("./routes/taskRoute")
 
-
 const app = express() 
 
 // Middleware
@@ -17,7 +16,6 @@ app.use(taskRoutes)
 app.get("/", (request, response) => {
     response.send("Home page");
 })
-
 
 const PORT  = process.env.PORT || 5000
 
