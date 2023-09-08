@@ -63,9 +63,9 @@ const updateTask = async (req, res) => {
         );
         // console.log("Updated Task:", task);
 
-        // if (!task) {
-        //     return res.status(404).json(`No task with id: ${id}`);
-        // }
+        if (!task) {
+            return res.status(404).json(`No task with id: ${id}`);
+        }
         res.status(200).json(task);
     } catch (error) {
         // console.error("Error:", error);
