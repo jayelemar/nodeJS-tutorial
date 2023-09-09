@@ -3,6 +3,7 @@ import React, { useState} from 'react'
 import TaskForm from './TaskForm'
 import Task from './Task'
 import { toast } from 'react-toastify';
+import { URL } from '../App';
 
 // http://localhost:5000/api/tasks
 
@@ -24,7 +25,7 @@ const TaskList = () => {
             return toast.error("Input Field cannot be empty")
         }
         try {
-            await axios.post("http://localhost:5000/api/tasks", formData)
+            await axios.post(`${URL}/api/tasks`, formData)
             setFormData({ ...formData, name: "" });
             toast.success("Task added successfully")
         } catch (error) {
