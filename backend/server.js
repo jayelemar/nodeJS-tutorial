@@ -3,13 +3,16 @@ const express = require("express");
 const connectDB = require('./config/connectDB')
 const mongoose = require("mongoose");
 const Task = require("./models/taskModel");
-const taskRoutes =require("./routes/taskRoute")
+const cors = require("cors") 
+const taskRoutes = require("./routes/taskRoute")
+
 
 const app = express() 
 
 // Middleware
 app.use(express.json());
-// app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: false}))
+app.use(cors()) // cors must be on top of routes
 app.use("/api/tasks", taskRoutes)
 
 
